@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { Button, Form, Grid, Header, Message, Segment } from 'semantic-ui-react'
 
@@ -14,12 +14,27 @@ class RegisterForm extends Component {
                     <Grid.Column style={{ maxWidth: 550 }}>
                         <Header as='h2' color='purple' textAlign='center'>
                             Sign Up
+                            <Header.Subheader>
+                                Back to
+                                <Link to='/login'>
+                                    LogIn
+                                </Link>
+                            </Header.Subheader>
                         </Header>
                         <Form size='large'>
                             <Segment>
                                 <Form.Group widths='equal'>
-                                    <Form.Input fluid label='FirstName' placeholder='First name' />
-                                    <Form.Input fluid label='LastName' placeholder='Last name' />
+                                    <Form.Input
+                                        fluid
+                                        label='FirstName'
+                                        placeholder='First name'
+                                        maxlength='10'
+                                    />
+                                    <Form.Input
+                                        fluid
+                                        label='LastName'
+                                        placeholder='Last name'
+                                    />
                                 </Form.Group>
                                 <Form.Input
                                     label='Email'

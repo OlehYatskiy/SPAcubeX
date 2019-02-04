@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
@@ -29,14 +29,18 @@ class LoginForm extends Component {
                                     placeholder='Password'
                                     type='password'
                                 />
-
-                                <Button color='teal' fluid size='large'>
-                                    Login
-                                </Button>
+                                <Link to='/register'>
+                                    <Button color='purple' fluid size='large'>
+                                        Login
+                                    </Button>
+                                </Link>
                             </Segment>
                         </Form>
                         <Message>
-                            New to us? <a href='#'>Sign Up</a>
+                            New to us?
+                            <Link to='/register'>
+                                Sign Up
+                            </Link>
                         </Message>
                     </Grid.Column>
                 </Grid>

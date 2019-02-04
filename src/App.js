@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-// import { withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter } from 'react-router-dom';
+
 
 import LoginForm from './components/LoginForm';
 import RegisterForm from './components/RegisterForm';
@@ -12,12 +13,14 @@ class App extends Component {
     render() {
         return (
             <div >
-              <LoginForm/>
-              {/*<RegisterForm/>*/}
-              {/*<UserProfile />*/}
+                <Switch>
+                    <Route exact path={"/login"} component={LoginForm} />
+                    <Route path={"/register"} component={RegisterForm} />
+                    <Route path={"/profile"} component={UserProfile} />
+                </Switch>
             </div>
     )
   }
 }
 
-export default App;
+export default withRouter(App);

@@ -29,11 +29,9 @@ class LoginForm extends Component {
                                     placeholder='Password'
                                     type='password'
                                 />
-                                <Link to='/register'>
                                     <Button color='purple' fluid size='large'>
                                         Login
                                     </Button>
-                                </Link>
                             </Segment>
                         </Form>
                         <Message>

@@ -15,21 +15,13 @@ class App extends Component {
     render() {
         return (
             <div>
-
+              <Switch>
                   <Redirect from="/" exact to="/aboutUs" />
-                  <Route path={"/aboutUs"} component={AboutUs} />
-                  <Route path={"/login"} component={LoginForm} />
-                  <Route path={"/register"} component={RegisterForm} />
-                  <Route path={"/profile"} component={UserProfile} />
-            
-                {/*<Switch>
-                  <Route path="/" component={App}>
-                  <IndexRedirect to="/aboutUs" />
                     <Route path={"/aboutUs"} component={AboutUs} />
                     <Route path={"/login"} component={LoginForm} />
                     <Route path={"/register"} component={RegisterForm} />
                     <Route path={"/profile"} component={UserProfile} />
-                </Switch>*/}
+                  </Switch>
             </div>
     )
   }

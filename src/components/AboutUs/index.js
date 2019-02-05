@@ -10,7 +10,6 @@ class UserProfile extends Component {
     render() {
 
         const gridstyle = {
-            border: '1px dotted grey',
             maxWidth: '1000px',
             marginTop: '100px',
             fontSize: '1.55em'

@@ -21,12 +21,24 @@ class UserProfile extends Component {
                                     <Header as='h2'>
                                         Firstname Lastname
                                     </Header>
-                                    <Header floated='right' as='h3'>
+                                    <Segment textAlign='right' clearing>
+                                      <Header as='h3'>
                                         Email
-                                    </Header>
+                                      </Header>
+                                    </Segment>
+                                    <Segment textAlign='right' clearing>
+                                      <Header as='h3'>
+                                        Address
+                                      </Header>
+                                    </Segment>
                                 </Grid.Column>
                             </Grid.Row>
                         </Grid>
+                        <Segment textAlign='right'>
+                          <Header as='h3'>
+                            something else
+                          </Header>
+                        </Segment>
                     </Grid.Column>
                 </Grid>
             </div>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Route, Switch, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+// import { IndexRedirect } from 'react-router';
 
 
 import LoginForm from './components/LoginForm';
@@ -13,13 +14,22 @@ class App extends Component {
 
     render() {
         return (
-            <div >
-                <Switch>
-                    <Route exact path={"/aboutUs"} component={AboutUs} />
+            <div>
+
+                  <Redirect from="/" exact to="/aboutUs" />
+                  <Route path={"/aboutUs"} component={AboutUs} />
+                  <Route path={"/login"} component={LoginForm} />
+                  <Route path={"/register"} component={RegisterForm} />
+                  <Route path={"/profile"} component={UserProfile} />
+            
+                {/*<Switch>
+                  <Route path="/" component={App}>
+                  <IndexRedirect to="/aboutUs" />
+                    <Route path={"/aboutUs"} component={AboutUs} />
                     <Route path={"/login"} component={LoginForm} />
                     <Route path={"/register"} component={RegisterForm} />
                     <Route path={"/profile"} component={UserProfile} />
-                </Switch>
+                </Switch>*/}
             </div>
     )
   }

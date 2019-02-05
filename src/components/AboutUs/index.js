@@ -8,9 +8,17 @@ import classes from './index.less';
 class UserProfile extends Component {
 
     render() {
+
+        const gridstyle = {
+            border: '1px dotted grey',
+            maxWidth: '1000px',
+            marginTop: '100px',
+            fontSize: '1.55em'
+        }
+
         return (
           <div>
-            <Segment floated='right'>
+            <Segment textAlign='right' padded>
               <Link to='/login'>
                 LogIn
               </Link>
@@ -19,8 +27,8 @@ class UserProfile extends Component {
               </Link>
             </Segment>
             <Grid textAlign="center">
-              <Grid.Column mobile={16} tablet={8} style={{ border: '1px dotted grey' }}>
-                <Header as='h1'>About Us</Header>
+              <Grid.Column mobile={16} tablet={8} style={gridstyle}>
+                <Header as='h1' size='large'>About Us</Header>
                 <p>
                   Leo vel orci porta non pulvinar neque. Cursus euismod quis viverra nibh cras pulvinar mattis.
                   Ipsum consequat nisl vel pretium lectus. Sed vulputate mi sit amet mauris.

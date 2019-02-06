@@ -6,56 +6,56 @@ import { FETCH_USERS, ADDING_USERS, EDIT_USERS } from "./types";
 export const selectUser = createAction("select user");
 export const unselectUser = createAction("unselect user");
 
-export const addNewUser = newUser => async dispatch => {
-  usersRef.push().set(newUser, (error) => {
-
-    dispatch({
-      type: ADDING_USERS,
-      payload: 'Sending'
-    });
-    if (error) {
-      console.log(error);
-      dispatch({
-        type: ADDING_USERS,
-        payload: 'Failed'
-      });
-    } else {
-      dispatch({
-        type: ADDING_USERS,
-        payload: 'Success'
-      });
-    }
-  });
-}
-export const updateUser = (currentUser, id) => async dispatch => {
-  usersRef.child(id).update(currentUser, (error) => {
-
-    dispatch({
-      type: EDIT_USERS,
-      payload: 'Sending'
-    });
-    if (error) {
-      console.log(error);
-      dispatch({
-        type: EDIT_USERS,
-        payload: 'Failed'
-      });
-    } else {
-      dispatch({
-        type: EDIT_USERS,
-        payload: 'Success'
-      });
-    }
-  });
-}
-export const removeUser = removeUserId => async dispatch => {
-  usersRef.child(removeUserId).remove();
-};
-export const fetchUsers = () => async dispatch => {
-  usersRef.on("value", snapshot => {
-    dispatch({
-      type: FETCH_USERS,
-      payload: snapshot.val()
-    });
-  });
-};
+// export const addNewUser = newUser => async dispatch => {
+//   usersRef.push().set(newUser, (error) => {
+//
+//     dispatch({
+//       type: ADDING_USERS,
+//       payload: 'Sending'
+//     });
+//     if (error) {
+//       console.log(error);
+//       dispatch({
+//         type: ADDING_USERS,
+//         payload: 'Failed'
+//       });
+//     } else {
+//       dispatch({
+//         type: ADDING_USERS,
+//         payload: 'Success'
+//       });
+//     }
+//   });
+// }
+// export const updateUser = (currentUser, id) => async dispatch => {
+//   usersRef.child(id).update(currentUser, (error) => {
+//
+//     dispatch({
+//       type: EDIT_USERS,
+//       payload: 'Sending'
+//     });
+//     if (error) {
+//       console.log(error);
+//       dispatch({
+//         type: EDIT_USERS,
+//         payload: 'Failed'
+//       });
+//     } else {
+//       dispatch({
+//         type: EDIT_USERS,
+//         payload: 'Success'
+//       });
+//     }
+//   });
+// }
+// export const removeUser = removeUserId => async dispatch => {
+//   usersRef.child(removeUserId).remove();
+// };
+// export const fetchUsers = () => async dispatch => {
+//   usersRef.on("value", snapshot => {
+//     dispatch({
+//       type: FETCH_USERS,
+//       payload: snapshot.val()
+//     });
+//   });
+// };

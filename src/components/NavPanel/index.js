@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import { Button, Form, Grid, Header, Menu, Segment } from 'semantic-ui-react'
 
@@ -10,7 +11,7 @@ class NavPanel extends Component {
 
         return (
             <Segment>
-                <Grid>
+                <Grid centered>
                     <Grid.Column mobile={16} tablet={10} computer={10}>
                         <Menu>
                             <Link to='/login'>

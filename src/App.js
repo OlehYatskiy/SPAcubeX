@@ -16,7 +16,7 @@ class App extends Component {
         return (
             <div>
               <Switch>
-                  <Redirect from="/" exact to="/aboutUs" />
+                  <Redirect from="/" exact to="/login" />
                     <Route path={"/aboutUs"} component={AboutUs} />
                     <Route path={"/login"} component={LoginForm} />
                     <Route path={"/register"} component={RegisterForm} />

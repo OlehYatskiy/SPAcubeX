@@ -59,7 +59,7 @@ class RegisterForm extends Component {
     const inputVal = event.target.value;
 
     this.setState({
-      [event.target.name]: inputVal,
+      firstName: inputVal,
       invalidFirstName: (namesRegExp.test(inputVal) ||
         (inputVal.length > 20 )) ||
         !inputVal ? true : false
@@ -100,17 +100,20 @@ class RegisterForm extends Component {
 
     this.setState({
       password: inputVal,
-      InvalidPassword: (inputVal.length > 6) ? false : true
+      invalidPassword: (inputVal.length > 6) ? false : true
     });
     this.isEnableApplyButton();
   }
 
   onApplyButtonClick = () => {
-    this.props.history.push("/login")
-    let data = {
-      name: 'Oleh',
-      password: '1234',
-      email: 'mymail@.com'
+
+     const { firstName, password , email } = this.state;
+
+     this.props.history.push("/login")
+     let data = {
+      name: firstName,
+      password: password,
+      email: email
     }
 
     // let header = {
@@ -132,7 +135,7 @@ class RegisterForm extends Component {
         invalidFirstName,
         invalidLastName,
         invalidEmail,
-        InvalidPassword,
+        invalidPassword,
         disabledApllyButton
       } = this.state;
 
@@ -157,7 +160,6 @@ class RegisterForm extends Component {
                                         fluid
                                         label='FirstName'
                                         placeholder='First name'
-                                        maxlength='10'
                                         error={invalidFirstName}
                                     />
                                     <Form.Input
@@ -182,7 +184,7 @@ class RegisterForm extends Component {
                                     iconPosition='left'
                                     placeholder='Password'
                                     type='password'
-                                    error={InvalidPassword}
+                                    error={invalidPassword}
                                 />
                               <Button onClick={this.onApplyButtonClick}
 

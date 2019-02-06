@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
-import NavPanel from './NavPanel';
+import NavPanel from '../NavPanel';
 
 import classes from './index.less';
 

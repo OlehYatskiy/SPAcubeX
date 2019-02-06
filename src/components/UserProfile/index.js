@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 
 import { Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 
+import NavPanel from './NavPanel';
+
 import classes from './index.less';
 
 class UserProfile extends Component {
@@ -10,6 +12,7 @@ class UserProfile extends Component {
     render() {
         return (
             <div className={classes.userProfile}>
+                <NavPanel/>
                 <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
                     <Grid.Column style={{ maxWidth: 1024 }}>
                         <Grid textAlign='center' stackable columns='equal'>

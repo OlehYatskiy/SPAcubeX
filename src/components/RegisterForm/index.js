@@ -113,11 +113,11 @@ class RegisterForm extends Component {
       email: 'mymail@.com'
     }
 
-    let header = {
-      'x-access-token',
-    }
+    // let header = {
+    //   'x-access-token',
+    // }
 
-    axios.post('http://localhost:4000/registration', data, header).then((response) => {
+    axios.post('http://localhost:4000/registration', data).then((response) => {
       console.log(response);
     })
     .then((error) => {

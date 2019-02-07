@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { string, array, func, any } from "prop-types";
 
-import { Button, Grid, Segment, Input } from 'semantic-ui-react'
-
+import { Button, Grid, Segment, Input, Header } from 'semantic-ui-react';
 import classes from './index.less';
 
 class EditUserForm extends Component {
@@ -17,6 +17,10 @@ class EditUserForm extends Component {
     invalidPassword: false,
     invalidImageFile: false,
     disabledApllyButton: true
+  }
+
+  static propTypes = {
+      onShowEditUserForm: func
   }
 
   isEnableApplyButton = () => {
@@ -101,7 +105,7 @@ class EditUserForm extends Component {
 
     }
 
-  onApplyButtonClick = () => {
+  onApplyButton = () => {
 
      const { username, password , email,  } = this.state;
 
@@ -120,6 +124,10 @@ class EditUserForm extends Component {
     })
   }
 
+    onCancelButton = () => {
+        this.props.onShowEditUserForm();
+    }
+
 
 
     render() {
@@ -128,49 +136,66 @@ class EditUserForm extends Component {
           invalidEmail,
           invalidPassword,
           invalidImageFile,
-        disabledApllyButton
+          disabledApllyButton
       } = this.state;
 
         return (
             <Segment>
                 <Grid stackable columns={2}>
-                    <Grid.Column textAlign="right">
-                        <Segment.Group >
-                            <Segment basic>
-                                <Input onChange={this.onUsernameInputChange}
-                                       onBlur={this.onBlurHandler}
-                                       ref={this.handleRef}
-                                       name='username'
-                                       error={invalidUsername}
-                                />
-                            </Segment>
-                            <Segment basic>
-                                <Input onChange={this.onEmailInputChange}
-                                       onBlur={this.onBlurHandler}
-                                       name='email'
-                                       error={invalidEmail}
-                                />
-                            </Segment>
-                        </Segment.Group>
-                    </Grid.Column>
-                    <Grid.Column textAlign="right">
-                        <Segment.Group>
-                            <Segment basic>
-                                <Input onChange={this.onImageFileInputChange}
-                                       onBlur={this.onBlurHandler}
-                                       name='imageFile'
-                                       error={invalidImageFile}
-                                />
-                            </Segment>
-                            <Segment basic>
-                                <Input onChange={this.onPasswordInputChange}
-                                       onBlur={this.onBlurHandler}
-                                       name='password'
-                                       error={invalidPassword}
-                                />
-                            </Segment>
-                        </Segment.Group>
-                    </Grid.Column>
+                    <Grid.Row centered>
+                        <Header size="large">Edit profile</Header>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Grid.Column textAlign="center">
+                            <Segment.Group >
+                                <Segment basic className={classes.editUserForm}>
+                                    <Input className={classes.editUserFormInput}
+                                        onChange={this.onUsernameInputChange}
+                                           onBlur={this.onBlurHandler}
+                                           ref={this.handleRef}
+                                           name='username'
+                                           placeholder="username"
+                                           error={invalidUsername}
+                                    />
+                                </Segment>
+                                <Segment basic>
+                                    <Input className={classes.editUserFormInput}
+                                        onChange={this.onEmailInputChange}
+                                           onBlur={this.onBlurHandler}
+                                           name='email'
+                                           placeholder="email"
+                                           error={invalidEmail}
+                                    />
+                                </Segment>
+                            </Segment.Group>
+                        </Grid.Column>
+                        <Grid.Column textAlign="center">
+                            <Segment.Group>
+                                <Segment basic>
+                                    <Input className={classes.editUserFormInput}
+                                        onChange={this.onImageFileInputChange}
+                                           onBlur={this.onBlurHandler}
+                                           name='imageFile'
+                                           placeholder="imageFile"
+                                           error={invalidImageFile}
+                                    />
+                                </Segment>
+                                <Segment basic>
+                                    <Input className={classes.editUserFormInput}
+                                        onChange={this.onPasswordInputChange}
+                                           onBlur={this.onBlurHandler}
+                                           name='password'
+                                           placeholder="password"
+                                           error={invalidPassword}
+                                    />
+                                </Segment>
+                            </Segment.Group>
+                        </Grid.Column>
+                    </Grid.Row>
+                    <Grid.Row>
+                        <Button content="Apply" onClick={this.onApplyButton}/>
+                        <Button content="Cancel" onClick={this.onCancelButton}/>
+                    </Grid.Row>
                 </Grid>
             </Segment>
         )

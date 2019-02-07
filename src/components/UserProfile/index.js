@@ -13,27 +13,47 @@ const ls = require('local-storage');
 class UserProfile extends Component {
 
     state = {
-        showEditUser: true
+        showEditUser: false,
+        userName: 'userName',
+        email: 'Email',
+        imageFile: ''
     }
 
     componentDidMount() {
-        console.log('did mount');
-        let lstoken = ls.get('userToken');
-        let data = {
-            token: lstoken
-        }
-        // const token = ls.get('userToken');
+        // console.log('did mount');
+        // let lstoken = ls.get('userToken');
+        // let data = {
+        //     token: lstoken
+        // }
+        // // const token = ls.get('userToken');
+        //
+        // axios.get('http://localhost:4000/get-profile', data).then((response) => {
+        //     console.log(response);
+        // })
+        //     .then((error) => {
+        //         console.log(error);
+        //     })
+    }
 
-        axios.get('http://localhost:4000/get-profile', data).then((response) => {
-            console.log(response);
+    onShowEditUserForm = () => {
+        const {showEditUser} = this.state;
+        this.setState({
+            showEditUser: !showEditUser
         })
-            .then((error) => {
-                console.log(error);
-            })
     }
 
     render() {
-        const { showEditUser } = this.state;
+        const {
+            showEditUser,
+            userName,
+            email,
+            imageFile
+        } = this.state;
+
+        const userImage = imageFile ?
+            imageFile
+            :
+            'https://react.semantic-ui.com/images/wireframe/square-image.png';
 
         return (
             <div className={classes.userProfile}>
@@ -43,20 +63,20 @@ class UserProfile extends Component {
                         <Grid textAlign='center' stackable columns='equal'>
                             <Grid.Row >
                                 <Grid.Column floated='left' mobile={16} tablet={4} computer={4} >
-                                    <Image centered src='https://react.semantic-ui.com/images/wireframe/square-image.png' size='medium' rounded />
+                                    <Image centered src={userImage} size='medium' rounded />
                                 </Grid.Column>
                                 <Grid.Column verticalAlign='middle' >
                                     <Header as='h2'>
-                                        Username
+                                        My profile
                                     </Header>
                                     <Segment textAlign='right' clearing>
                                       <Header as='h3'>
-                                        Email
+                                          {userName}
                                       </Header>
                                     </Segment>
                                     <Segment textAlign='right' clearing>
                                       <Header as='h3'>
-                                        Address
+                                          {email}
                                       </Header>
                                     </Segment>
                                 </Grid.Column>
@@ -68,7 +88,10 @@ class UserProfile extends Component {
                           </Header>
                         </Segment>
                         {
-                            showEditUser && <EditUserForm/>
+                            showEditUser ?
+                                <EditUserForm onShowEditUserForm={this.onShowEditUserForm} />
+                                :
+                                <Button content="Edit profile" onClick={this.onShowEditUserForm}/>
                         }
                     </Grid.Column>
                 </Grid>
